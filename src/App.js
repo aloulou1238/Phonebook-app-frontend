@@ -58,6 +58,10 @@ const App = () => {
       PersonsService
         .addPerson({name: newName, number: newNumber})
         .then(newPerson => setPersons(persons.concat(newPerson)))
+        .catch(error => {
+          setNotificationType('error')
+          setNotificationMessage("The name must be 3 letters or more.")  
+        })
       setNotificationType('success')
       setNotificationMessage(`${newName}`)
       setTimeout(() => {
